@@ -1,0 +1,2 @@
+class Handbag < ApplicationRecord
+end
