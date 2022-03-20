@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
    #root "homepage#index"
-  resources :handbags, only: [:index, :create]
+  resources :handbags, only: [:index, :create, :destroy]
   #resources :shoes
   #resources :tops
   #resources :jackets

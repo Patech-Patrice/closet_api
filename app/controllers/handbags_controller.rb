@@ -31,6 +31,16 @@ class HandbagsController < ApplicationController
     end
   end
 
+  def destroy
+      Handbag.find(params[:id]).destroy!
+
+      head :no_content
+  end
+
+
+
+
+
   private
 
   def handbag_params
