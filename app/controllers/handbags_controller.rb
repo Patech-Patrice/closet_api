@@ -24,7 +24,7 @@ class HandbagsController < ApplicationController
   #use rails require params to access each individual handbag object
   def create
     @handbag = Handbag.create(handbag_params)
-    if handbag.save
+    if @handbag.save
       render json: @handbag, status: 200
     else
       render json: { errors: @handbag.errors.full_messages }, status: :unprocessible_entity
