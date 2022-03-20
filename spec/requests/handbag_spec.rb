@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+#one unit test
 describe 'Closet API', type: :request do
     it 'returns all handbags' do
         FactoryBot.create(:handbag, name:"Gucci Tian Chain Wallet", style:"Wallet on a Chain", description:"Multicolor chain wallet with Tian print", brand_name:"Gucci", size:"XS", price: 695)
