@@ -6,7 +6,7 @@ class CreateHandbags < ActiveRecord::Migration[7.0]
       t.string :description
       t.string :brand_name
       t.string :size
-      t.integer :price
+      
 
       t.timestamps
     end

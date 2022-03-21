@@ -17,7 +17,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_18_181205) do
     t.string "description"
     t.string "brand_name"
     t.string "size"
-    t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

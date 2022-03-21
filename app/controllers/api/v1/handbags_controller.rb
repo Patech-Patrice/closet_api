@@ -1,18 +1,22 @@
+require 'pry'
+
 module Api
   module V1
     class HandbagsController < ApplicationController
       def index
-      @handbags = Handbag.all
-      render json: @handbags
+      render json: Handbag.all
     end
 
   #use rails require params to access each individual handbag object
     def create
-      @handbag = Handbag.create(handbag_params)
-      if @handbag.save
-        render json: @handbag, status: 200
+      handbag = Handbag.new(handbag_params)
+      if handbag.save
+       # binding.pry
+        render json: handbag, status: 200
       else
-        render json: { errors: @handbag.errors.full_messages }, status: :unprocessible_entity
+        render json: { errors: handbag.errors.full_messages }, status: :unprocessable_entity
+        puts "Hello"
+        #binding.pry
       end
     end
 
@@ -24,7 +28,7 @@ module Api
     private
 
       def handbag_params
-        params.permit(:handbag, :name, :style, :description, :brand_name, :size, :price)
+        params.permit(:handbag, :name, :style, :description, :brand_name, :size)
       end
     end 
   end
