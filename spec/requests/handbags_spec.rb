@@ -3,14 +3,17 @@ require 'pry'
 
 RSpec.describe 'Closet API', type: :request do
         describe 'GET /handbags' do
+            #this code gets executed before anything else in this do block
             before do
                 FactoryBot.create(:handbag, 
-                name:"Gucci Tian Chain Wallet", 
-                style:"Wallet on a Chain", 
-                description:"Multicolor chain wallet with Tian print", 
-                brand_name:"Gucci", 
-                size:"XS")
-                FactoryBot.create(:handbag, name:"Gucci GG Marmont Matelasse", style:"Wallet on a Chain", description:"Monogram GG logo mini Bag with gold chain", brand_name:"Gucci", size:"XS")
+                brand:"brand", 
+                color:"color", 
+                fabric:"fabric",  )
+                FactoryBot.create(:handbag,
+                 brand:"brand",
+                 color:"color", 
+                 fabric:"fabric", 
+                 )
                 get '/api/v1/handbags'
             end    
 
@@ -45,87 +48,52 @@ RSpec.describe 'Closet API', type: :request do
     # end
 
 
-    it "is has a name" do
+    it "is has a brand" do
         handbag = Handbag.new(
-            name:'',
-            style: 'style',
-            description: 'description',
-            brand_name: 'brand name',
-            size: 'size'
+            brand:'',
+            color: 'style',
+            fabric: 'description',
         )
          expect(handbag).to_not be_valid  
-         handbag.name = "has a name" 
+         handbag.brand = "has a brand" 
          expect(handbag).to be_valid
     end
 
     #it is not valid without a style
-     it "is has a style" do
+     it "is has a color" do
         handbag = Handbag.new(
-            name:'Gucci',
-            style: '',
-            description: 'description',
-            brand_name: 'brand name',
-            size: 'size'
+            brand:'Gucci',
+            color: '',
+            fabric: 'description',
+            
         )
          expect(handbag).to_not be_valid  
-         handbag.style = "has a style" 
+         handbag.color = "has a color" 
          expect(handbag).to be_valid
     end
 
 
     # it "is not valid without a description"
-    it "is has a description" do
+    it "is has a fabric" do
         handbag = Handbag.new(
-            name:'name',
-            style: 'style',
-            description: '',
-            brand_name: 'brand name',
-            size: 'size'
+            brand:'name',
+            color: 'style',
+            fabric: '',
         )
          expect(handbag).to_not be_valid  
-         handbag.description = "has a description" 
+         handbag.fabric = "has a fabric" 
          expect(handbag).to be_valid
     end
 
-    # it "is not valid without a brand_name"
-    it "is has a brand_name" do
-        handbag = Handbag.new(
-            name:'name',
-            style: 'style',
-            description: 'description',
-            brand_name: '',
-            size: 'size'
-        )
-         expect(handbag).to_not be_valid  
-         handbag.brand_name = "has a brand name" 
-         expect(handbag).to be_valid
-    end
-
-    # it "is not valid without a size"
-    it "is has a size" do
-        handbag = Handbag.new(
-            name:'name',
-            style: 'style',
-            description: 'description',
-            brand_name: 'brand name',
-            size: ''
-        )
-         expect(handbag).to_not be_valid  
-         handbag.size = "has a size" 
-         expect(handbag).to be_valid
-    end
-
-
-
+   
 
     describe 'DELETE /handbags/:id' do
         #create a factory bot and assign it to handbag
     let!(:handbag) {FactoryBot.create(:handbag, 
-    name:"name", 
-    style:"style", 
-    description:"description", 
-    brand_name:"brand name", 
-    size:"size")}
+    brand:"name", 
+    color:"style", 
+    fabric:"description", 
+    )}
 
     it 'deletes a handbag' do
         expect {

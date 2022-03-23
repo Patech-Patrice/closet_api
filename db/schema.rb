@@ -12,11 +12,9 @@
 
 ActiveRecord::Schema[7.0].define(version: 2022_03_18_181205) do
   create_table "handbags", force: :cascade do |t|
-    t.string "name"
-    t.string "style"
-    t.string "description"
-    t.string "brand_name"
-    t.string "size"
+    t.string "brand"
+    t.string "color"
+    t.string "fabric"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,8 +1,6 @@
 class Handbag < ApplicationRecord
-    validates :name, presence: true
-    validates :style, presence: true
-    validates :description, presence: true
-    validates :brand_name, presence: true 
-    validates :size, presence: true
-    
+    validates :brand, presence: true
+    validates :color, presence: true
+    validates :fabric, presence: true
+  
 end
