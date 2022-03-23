@@ -29,7 +29,7 @@ module Api
     private
 
       def handbag_params
-        params.permit(:handbag, :brand, :color, :fabric)
+        params.permit(:handbag, :brand, :color, :fabric, :name)
       end
     end 
   end

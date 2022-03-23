@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_18_181205) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_23_183938) do
+  create_table "brands", force: :cascade do |t|
+    t.string "designer_name"
+    t.string "country_origin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "handbags", force: :cascade do |t|
-    t.string "brand"
     t.string "color"
     t.string "fabric"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "brand_id"
+    t.string "name"
+    t.index ["brand_id"], name: "index_handbags_on_brand_id"
   end
 
 end

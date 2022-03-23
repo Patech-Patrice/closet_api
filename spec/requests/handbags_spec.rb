@@ -8,11 +8,13 @@ RSpec.describe 'Closet API', type: :request do
                 FactoryBot.create(:handbag, 
                 brand:"brand", 
                 color:"color", 
-                fabric:"fabric",  )
+                fabric:"fabric",
+                name:"name"  )
                 FactoryBot.create(:handbag,
                  brand:"brand",
                  color:"color", 
                  fabric:"fabric", 
+                 name: "name"
                  )
                 get '/api/v1/handbags'
             end    
@@ -53,6 +55,7 @@ RSpec.describe 'Closet API', type: :request do
             brand:'',
             color: 'style',
             fabric: 'description',
+            name: ''
         )
          expect(handbag).to_not be_valid  
          handbag.brand = "has a brand" 
@@ -65,6 +68,7 @@ RSpec.describe 'Closet API', type: :request do
             brand:'Gucci',
             color: '',
             fabric: 'description',
+            name: ''
             
         )
          expect(handbag).to_not be_valid  
@@ -79,9 +83,22 @@ RSpec.describe 'Closet API', type: :request do
             brand:'name',
             color: 'style',
             fabric: '',
+            name:''
         )
          expect(handbag).to_not be_valid  
          handbag.fabric = "has a fabric" 
+         expect(handbag).to be_valid
+    end
+
+    it "is has a name" do
+        handbag = Handbag.new(
+            brand:'brand',
+            color: 'style',
+            fabric: 'description',
+            name:''
+        )
+         expect(handbag).to_not be_valid  
+         handbag.name = "has a name" 
          expect(handbag).to be_valid
     end
 
@@ -90,9 +107,10 @@ RSpec.describe 'Closet API', type: :request do
     describe 'DELETE /handbags/:id' do
         #create a factory bot and assign it to handbag
     let!(:handbag) {FactoryBot.create(:handbag, 
-    brand:"name", 
+    brand:"brand", 
     color:"style", 
     fabric:"description", 
+    name: "name"
     )}
 
     it 'deletes a handbag' do
