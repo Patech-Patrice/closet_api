@@ -9,12 +9,13 @@ module Api
 
   #use rails require params to access each individual handbag object
     def create
-      handbag = Handbag.new(handbag_params)
-      if handbag.save
+      @handbag = Handbag.new(handbag_params)
+      if @handbag.save
+        binding.pry
+        render json: @handbag, status: 200
        # binding.pry
-        render json: handbag, status: 200
       else
-        render json: { errors: handbag.errors.full_messages }, status: :unprocessable_entity
+        render json: { errors: @handbag.errors.full_messages }, status: :unprocessable_entity
         puts "Hello"
         #binding.pry
       end
